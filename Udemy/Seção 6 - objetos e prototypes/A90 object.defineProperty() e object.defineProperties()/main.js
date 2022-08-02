@@ -23,5 +23,5 @@ function Produto (nome, preco, estoque) {
 }
 
 const p1 = new Produto('mouse', 50, 39);
-p1.estoque = 20
+p1.estoque = 20;
 console.log(p1);
