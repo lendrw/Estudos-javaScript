@@ -1,74 +1,30 @@
 .main-bg {
-    background-image: url('../img/endless-constellation.svg');
-    background-size: 15%;
-    background-position: center center;
-    color: var(--white-color);
-  }
-  
-  .white-bg {
-    background: var(--white-color);
-    color: var(--primary-color);
-  }
-  
-  .main-content {
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: var(--gap);
-  }
-  
-  .section {
-    min-height: 100vh;
-  } 
+  background-image: url('../img/endless-constellation.svg');
+  background-size: cover;
+  background-position: center center;
+  color: var(--white-color);
+}
 
-  .menu-spacing {
-    height: 6.5rem;
-  }
+.white-bg {
+  background: var(--white-color);
+  color: var(--primary-color);
+}
 
-  .secondary-content {
-    max-width: 64rem;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-  }
+.main-content {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 10rem var(--gap);
+}
 
-  .grid-one-content {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    height: 100vh;
-  }
+.section {
+  min-height: 100vh;
+}
 
-  .grid-main-heading {
-    margin-bottom: 1rem;
-  }
+.menu-spacing {
+  height: 65px;
+}
 
-  .grid-description {
-    padding-bottom: 5rem;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--gap);
-    counter-reset: grid-counter;
-  }
-
-  .grid h3 {
-    font-size: 3rem;
-    position: relative;
-    padding-left: 5rem;
-    padding-bottom: 2rem;
-  }
-
-  .grid h3::before {
-    counter-increment: grid-counter;
-    content: counter(grid-counter);
-    position: absolute;
-    font-size: 8rem;
-    font-style: italic;
-    top: -4rem;
-    left: -2rem;
-    transform: rotate(5deg);
-  }
+body .full-width {
+  width: 100%;
+  flex: 1 1 100%;
+}
