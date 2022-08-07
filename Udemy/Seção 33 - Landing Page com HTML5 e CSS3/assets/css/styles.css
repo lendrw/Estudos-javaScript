@@ -142,7 +142,7 @@
 }
 
 .form-group ::placeholder {
-  color: var(--light-gray-color);
+  color: var(--gray-color);
 }
 
 .footer {
