@@ -1,8 +1,12 @@
 form {
-    padding: 8%;
+    padding: 5%;
 }
 
 .form-style {
     border: 1px solid rgb(151, 151, 151);
     border-radius: 0.8rem;
+}
+
+.container {
+    padding: 3%;
 }
