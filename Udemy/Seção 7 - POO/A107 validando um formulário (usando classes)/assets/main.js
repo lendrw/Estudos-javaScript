@@ -36,6 +36,11 @@ class ValidaFormulario {
         }
     }
 
+    validaCPF(campo) {
+        const cpf = new this.validaCPF(cpf.value);
+        
+    }
+
     criaErro(campo, msg) {
         const div = document.createElement('div');
         div.innerHTML = msg;
