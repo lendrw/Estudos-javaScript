@@ -13,11 +13,11 @@
   <section class="container">
     <h1>Gerador de senhas</h1>
 
-    <div class="senha-gerada"></div>
+    <div class="senha-gerada">Selecione as opções</div>
 
     <div>
       <label for="number">Quantidade de caracteres</label>
-      <input type="number" id="number" name="number" min="1" max="20">
+      <input type="number" id="number" name="number" min="1" max="20" value="20" class="qtd-caracteres">
     </div>
 
     <div>
@@ -27,7 +27,7 @@
     
     <div>
       <label for="minuscula">Adicionar minúsculas</label>
-      <input type="checkbox" id="minuscula" name="minuscula" class="chk-minusculas" checked>
+      <input type="checkbox" id="minuscula" name="minuscula" class="chk-minusculas">
     </div>
 
     <div>
@@ -37,7 +37,7 @@
 
     <div>
       <label for="symbol">Adicionar símbolos</label>
-      <input type="checkbox" id="symbol" name="symbol" class="chk-symbols" checked>
+      <input type="checkbox" id="symbol" name="symbol" class="chk-symbols" >
     </div>
 
     <button class="gerar-senha">Gerar senha</button>
