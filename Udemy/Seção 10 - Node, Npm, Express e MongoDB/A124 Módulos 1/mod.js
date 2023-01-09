@@ -1,11 +1,12 @@
 const nome = 'Luiz';
 const sobrenome = 'Miranada';
 
-const falaNome = () => {
-    console.log(nome, sobrenome);
-};
+const falaNome = () => nome + ' ' + sobrenome;
 
 //module.exports.nome = nome;
-exports.nome1 = nome;
+//exports.nome1 = nome;
 
-console.log(module.exports);
+exports.nome = nome;
+exports.sobrenome = sobrenome;
+exports.falaNome = falaNome;
+this.qualquerCoisa = 'O que eu quiser exportar.'
