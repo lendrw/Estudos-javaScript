@@ -19,9 +19,10 @@ app.get('/', (req, res) => {
 
 app.get('/testes/:idUsuarios?/:parametro?', (req, res) => {
     //http://localhost:3000/testes/?nome=Leandro&sobrenome=Freire&idade=21
+    //http://localhost:3000/testes/?nome=Leandro&sobrenome=Freire&idade=21&facebookprofile=tal
     console.log(req.params);
     console.log(req.query);
-    res.send(req.query);
+    res.send(req.query.facebookprofile);
 });
 
 app.post('/', (req, res) => {
