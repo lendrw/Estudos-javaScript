@@ -55,4 +55,11 @@ Contato.prototype.cleanUp = function() {
   };
 }
 
+Contato.prototype.edit = async function(id) {
+  if(typeof id === 'string') return;
+  this.validate();
+  if(this.errors.length > 0) return;
+  this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, { new: true }); //retorna os dados atualizados
+};
+
 module.exports = Contato;
