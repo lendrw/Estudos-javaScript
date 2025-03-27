@@ -1,14 +1,21 @@
-import { createContext, useCallback, useContext, useMemo, useState, ReactNode } from "react";
-import { Box, ThemeProvider } from "@mui/material";
+import { createContext, useCallback, useContext, useState, ReactNode } from "react";
+
+interface IDrawerOption {
+    icon: string;
+    path: string;
+    label: string;
+}
 
 interface IDrawerContextData {
-    themeName: "light" | "dark";
-    toggleTheme: () => void;
+    isDrawerOpen: boolean;
+    toggleDrawerOpen: () => void;
+    drawerOptions: IDrawerOption[];
+    setDrawerOptions: (newDrawerOptions: IDrawerOption[]) => void;
 }
 
 const DrawerContext = createContext({} as IDrawerContextData);
 
-export const useAppDrawerContext = () => {
+export const useDrawerContext = () => {
     return useContext(DrawerContext);
 };
 
@@ -16,24 +23,21 @@ interface IAppThemeProviderProps {
     children: ReactNode;
 }
 
-export const AppThemeProvider: React.FC<IAppThemeProviderProps> = ({ children }) => {
-    const [themeName, setThemeName] = useState<"light" | "dark">("light");
+export const DrawerProvider: React.FC<IAppThemeProviderProps> = ({ children }) => {
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [drawerOptions, setDrawerOptions] = useState<IDrawerOption[]>([]);
 
-    const toggleTheme = useCallback(() => {
-        setThemeName(oldThemeName => (oldThemeName === "light" ? "dark" : "light"));
+    const toggleDrawerOpen = useCallback(() => {
+        setIsDrawerOpen(oldDrawerOpen => !oldDrawerOpen);
     }, []);
 
-    const theme = useMemo(() => {
-        return themeName === "light" ? LightTheme : DarkTheme;
-    }, [themeName]);
+    const handleSetDrawerOptions = useCallback((newDrawerOptions: IDrawerOption[]) => {
+        setDrawerOptions(newDrawerOptions);
+    }, [])
 
     return (
-        <DrawerContext.Provider value={{ themeName, toggleTheme }}>
-            <ThemeProvider theme={theme}>
-                <Box width="100vw" height="100vh" bgcolor={theme.palette.background.default}>
-                    {children}
-                </Box>
-            </ThemeProvider>
+        <DrawerContext.Provider value={{ isDrawerOpen, drawerOptions, toggleDrawerOpen, setDrawerOptions: handleSetDrawerOptions }}>
+            {children}
         </DrawerContext.Provider>
     );
 };
