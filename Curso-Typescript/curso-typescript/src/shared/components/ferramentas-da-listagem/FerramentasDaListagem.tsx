@@ -7,7 +7,7 @@ interface IFerramentasDaListagemProps {
     aoMudarTextoDeBusca?: (novoTexto: string) => void; 
     textoBotaoNovo?: string;
     mostrarBotaoNovo?: boolean;
-    aoClicarEmNovo?: () => void; 
+    aoClicarEmNovo?: () => void;
 }
 
 export const FerramentasDaListagem: React.FC<IFerramentasDaListagemProps> = ({
@@ -22,6 +22,7 @@ export const FerramentasDaListagem: React.FC<IFerramentasDaListagemProps> = ({
 
   return (
     <Box 
+        gap={1}
         height={theme.spacing(5)} 
         marginX={1} 
         padding={1} 
