@@ -22,24 +22,31 @@ type TPessoasComTotalCount = {
 
 const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Error> => {
     try {
-        const urlRelativa = `/pessoas?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}`;
-        const { data, headers } = await Api.get(urlRelativa);
+        // Primeiro, busca todos os dados pra contar
+        const { data: todos } = await Api.get<IListagemPessoa[]>('/pessoas');
 
+        // Filtra (se tiver filtro)
         const dadosFiltrados = filter
-            ? data.filter((p: IListagemPessoa) =>
+            ? todos.filter(p =>
                   p.nomeCompleto.toLowerCase().includes(filter.toLowerCase())
               )
-            : data;
+            : todos;
+
+        // Pagina manualmente
+        const start = (page - 1) * Environment.LIMITE_DE_LINHAS;
+        const end = start + Environment.LIMITE_DE_LINHAS;
+        const paginados = dadosFiltrados.slice(start, end);
 
         return {
-            data: dadosFiltrados,
-            totalCount: Number(headers['x-total-count'] || dadosFiltrados.length),
+            data: paginados,
+            totalCount: dadosFiltrados.length,
         };
     } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao listar os registros.');
     }
 };
+
 
 
 const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
