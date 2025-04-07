@@ -35,8 +35,8 @@ export const FerramentasDaListagem: React.FC<IFerramentasDaListagemProps> = ({
         {mostrarInputBusca && (
             <TextField
                 size='small'
-                placeholder={Environment.INPUT_DE_BUSCA}
                 value={textoDaBusca}
+                placeholder={Environment.INPUT_DE_BUSCA}
                 onChange={(e) => aoMudarTextoDeBusca?.(e.target.value)}
             />
         )}
