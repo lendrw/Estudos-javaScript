@@ -20,9 +20,9 @@
     },
     {
       "id": "7",
-      "cidadeId": 7,
+      "nomeCompleto": "Fábio Cirilo",
       "email": "fabio.almeida@gmail.com",
-      "nomeCompleto": "Fábio Almeida"
+      "cidadeId": 7
     },
     {
       "id": "8",
@@ -101,6 +101,12 @@
       "nomeCompleto": "l",
       "email": "l@gmail.com",
       "cidadeId": "1"
+    },
+    {
+      "id": "a116",
+      "nomeCompleto": "Wagner Moura",
+      "email": "moura@gmail.com",
+      "cidadeId": "2"
     }
   ]
 }
