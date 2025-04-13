@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Environment } from "../../../environment";
 import { Api } from "../axios-config";
 

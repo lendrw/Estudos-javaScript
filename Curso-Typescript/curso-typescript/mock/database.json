@@ -14,9 +14,9 @@
     },
     {
       "id": "6",
-      "cidadeId": 6,
+      "nomeCompleto": "Juliana Mendes",
       "email": "juliana.mendes@gmail.com",
-      "nomeCompleto": "Juliana Mendes"
+      "cidadeId": 6
     },
     {
       "id": "7",
@@ -113,6 +113,22 @@
     {
       "id": "fd7a",
       "nome": "Xique-xique"
+    },
+    {
+      "id": "0911",
+      "nome": "Carnaubais"
+    },
+    {
+      "id": "dc4e",
+      "nome": "Tramandaí"
+    },
+    {
+      "id": "670e",
+      "nome": "Capslock"
+    },
+    {
+      "id": "d29d",
+      "nome": "Chernobyl"
     }
   ]
 }

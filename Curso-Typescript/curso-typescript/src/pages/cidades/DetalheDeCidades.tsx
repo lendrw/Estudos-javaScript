@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { LayoutBaseDePagina } from "../../shared/layouts";
@@ -131,7 +132,13 @@ export const DetalheDeCidades: React.FC = () => {
             }
         >
 
-        <VForm ref={formRef} onSubmit={handleSave}>
+        <VForm 
+            ref={formRef} 
+            onSubmit={handleSave} 
+            placeholder={undefined} 
+            onPointerEnterCapture={undefined} 
+            onPointerLeaveCapture={undefined}
+        >
             <Box margin={1} display='flex' flexDirection='column' component={Paper} variant='outlined'>
                 
                 <Grid2 container direction='column' padding={2} spacing={2}>

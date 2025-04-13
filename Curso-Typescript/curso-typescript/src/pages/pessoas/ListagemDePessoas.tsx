@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect, useMemo, useState } from "react";
 import { LayoutBaseDePagina } from "../../shared/layouts";
 import { FerramentasDaListagem } from "../../shared/components";

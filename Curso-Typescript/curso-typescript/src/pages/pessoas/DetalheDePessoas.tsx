@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { LayoutBaseDePagina } from "../../shared/layouts";
@@ -6,6 +7,7 @@ import { PessoasService } from "../../shared/services/api/pessoas/PessoasService
 import { VTextField, VForm, useVForm, IVFormErrors } from "../../shared/forms";
 import { Box, Grid2, LinearProgress, Paper, Typography } from "@mui/material";
 import * as yup from 'yup';
+import { AutoCompleteCidade } from "./components/AutoCompleteCidade";
 
 interface IFormData {
     email: string;
@@ -46,7 +48,7 @@ export const DetalheDePessoas: React.FC = () => {
         } else {
             formRef.current?.setData({
                 email: '',
-                cidadeId: '',
+                cidadeId: undefined,
                 nomeCompleto: '',
             });
         }
@@ -137,7 +139,10 @@ export const DetalheDePessoas: React.FC = () => {
             }
         >
 
-        <VForm ref={formRef} onSubmit={handleSave}>
+        <VForm 
+            ref={formRef} 
+            onSubmit={handleSave} 
+        >
             <Box margin={1} display='flex' flexDirection='column' component={Paper} variant='outlined'>
                 
                 <Grid2 container direction='column' padding={2} spacing={2}>
@@ -175,11 +180,7 @@ export const DetalheDePessoas: React.FC = () => {
 
                     <Grid2 container direction='row' spacing={2} maxHeight={90}>
                         <Grid2 size={{ xs: 12, sm: 12, md: 6, lg: 4, xl: 2 }}>
-                            <VTextField 
-                                fullWidth
-                                disabled={isLoading}
-                                label='Cidade' 
-                                name='cidadeId'/>
+                            <AutoCompleteCidade isExternalLoading={isLoading}/>
                         </Grid2>
                     </Grid2>
 
