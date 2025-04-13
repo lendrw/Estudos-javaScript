@@ -1,4 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
+import './shared/forms/YupTranslation';
 import './App.css';
 import { AppRoutes } from './routes';
 import { AppThemeProvider } from './shared/contexts/ThemeContext';

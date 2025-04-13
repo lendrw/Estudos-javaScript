@@ -108,5 +108,11 @@
       "email": "moura@gmail.com",
       "cidadeId": "2"
     }
+  ],
+  "cidades": [
+    {
+      "id": "fd7a",
+      "nome": "Xique-xique"
+    }
   ]
 }
