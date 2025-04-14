@@ -5,7 +5,7 @@ import {
         } from "@mui/material";
 import { Box } from '@mui/system';
 import { ReactNode } from "react";
-import { useAppThemeContext, useDrawerContext } from "../../contexts";
+import { useAppThemeContext, useAuthContext, useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 import React from "react";
 
@@ -48,6 +48,7 @@ interface IMenuLateralProps {
 
     const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
     const { toggleTheme } = useAppThemeContext();
+    const { logout } = useAuthContext();
 
   return (
     <>
@@ -82,6 +83,12 @@ interface IMenuLateralProps {
                                 <Icon>dark_mode</Icon>
                             </ListItemIcon>
                             <ListItemText primary="Alternar tema"/>
+                        </ListItemButton>
+                        <ListItemButton onClick={logout}>
+                            <ListItemIcon>
+                                <Icon>logout</Icon>
+                            </ListItemIcon>
+                            <ListItemText primary="Sair"/>
                         </ListItemButton>
                     </List>
                 </Box>
