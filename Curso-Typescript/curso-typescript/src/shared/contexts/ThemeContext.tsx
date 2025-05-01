@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useMemo, useState, ReactNode } from "react";
+import React, { createContext, useCallback, useContext, useMemo, useState, ReactNode } from "react";
 import { Box, ThemeProvider } from "@mui/material";
 import { DarkTheme, LightTheme } from "../themes";
 

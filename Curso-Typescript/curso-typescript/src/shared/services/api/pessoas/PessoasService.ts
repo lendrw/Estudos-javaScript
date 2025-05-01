@@ -41,6 +41,7 @@ const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Er
             data: paginados,
             totalCount: dadosFiltrados.length,
         };
+        
     } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao listar os registros.');
