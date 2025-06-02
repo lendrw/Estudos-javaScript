@@ -223,7 +223,6 @@ const searchPhotos = async(req, res) => {
 
     res.status(200).json(photos);
 
-
 }
 
 module.exports = {
