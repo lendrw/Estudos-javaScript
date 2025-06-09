@@ -64,7 +64,7 @@ const login = async (req, res) => {
     }
 
     //Check if password matches
-    if(!(bcrypt.compare(password, user.password))) {
+    if(!(await bcrypt.compare(password, user.password))) {
         res.status(422).json({errors: ["Senha inválida"]})
         return
     }
