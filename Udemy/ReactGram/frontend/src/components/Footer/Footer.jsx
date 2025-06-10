@@ -5,7 +5,7 @@ const Footer = () => {
     <footer id="footer">
       <p>ReactGram &copy; 2025</p>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

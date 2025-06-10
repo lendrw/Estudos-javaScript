@@ -1,16 +1,16 @@
-import './Auth.css';
+import "./Auth.css";
 
-import { Link } from 'react-router-dom';
-import Message from '../../components/Message/Message';
+import { Link } from "react-router-dom";
+import Message from "../../components/Message/Message";
 
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import { login, reset } from '../../slices/authSlice'
+import { login, reset } from "../../slices/authSlice";
 
 const Login = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
@@ -22,15 +22,15 @@ const Login = () => {
     const user = {
       email,
       password,
-    }
+    };
 
     dispatch(login(user));
-  }
+  };
 
   //clean all auth states
   useEffect(() => {
-    dispatch(reset())
-  }, [dispatch])
+    dispatch(reset());
+  }, [dispatch]);
 
   return (
     <div id="login">
@@ -50,14 +50,14 @@ const Login = () => {
           value={password || ""}
         />
         {!loading && <input type="submit" value="Entrar" />}
-        {loading && <input type="submit" value="Aguarde..." disabled/>}
-        {error && <Message msg={error} type="error"/>}
+        {loading && <input type="submit" value="Aguarde..." disabled />}
+        {error && <Message msg={error} type="error" />}
       </form>
       <p>
         Não tem uma conta? <Link to="/register">Clique aqui</Link>
       </p>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

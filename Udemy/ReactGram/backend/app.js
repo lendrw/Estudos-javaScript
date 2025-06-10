@@ -10,7 +10,7 @@ const app = express();
 
 // config JSON and form data response
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 // solve CORS
 app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
@@ -27,5 +27,5 @@ const router = require("./routes/Router.js");
 app.use(router);
 
 app.listen(port, () => {
-    console.log(`App rodando na porta ${port}`);
+  console.log(`App rodando na porta ${port}`);
 });

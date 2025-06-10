@@ -6,7 +6,7 @@ router.use("/api/photos", require("./PhotoRoutes"));
 
 // test route
 router.get("/", (req, res) => {
-    res.send("API Working!");
+  res.send("API Working!");
 });
 
 module.exports = router;
