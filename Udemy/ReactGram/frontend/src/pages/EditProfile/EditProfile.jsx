@@ -36,33 +36,19 @@ const EditProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //gather user data from states
     const userData = {
       name,
+      ...(profileImage && { profileImage }),
+      ...(bio && { bio }),
+      ...(password && { password }),
     };
 
-    if (profileImage) {
-      userData.profileImage = profileImage;
-    }
-
-    if (bio) {
-      userData.bio = bio;
-    }
-
-    if (password) {
-      userData.password = password;
-    }
-
-    //build form data
     const formData = new FormData();
+    Object.keys(userData).forEach((key) => {
+      formData.append(key, userData[key]);
+    });
 
-    const userFormData = Object.keys(userData).forEach((key) =>
-      formData.append(key, userData[key])
-    );
-
-    formData.append("user", userFormData);
-
-    await dispatch(updateProfile(userFormData));
+    await dispatch(updateProfile(formData));
 
     setTimeout(() => {
       dispatch(resetMessage());
