@@ -44,6 +44,10 @@ export const getUserDetails = createAsyncThunk(
   async (id, thunkAPI) => {
     const data = await userService.getUserDetails(id);
 
+    if (data.errors) {
+      return thunkAPI.rejectWithValue(data.errors[0]);
+    }
+
     return data;
   }
 );
