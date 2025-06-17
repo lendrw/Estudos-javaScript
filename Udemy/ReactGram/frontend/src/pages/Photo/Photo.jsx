@@ -41,7 +41,16 @@ const Photo = () => {
   const handleComment = (e) => {
     e.preventDefault();
 
-    
+    const commentData ={
+      comment: commentText,
+      id: photo._id,
+    }
+
+    dispatch(comment(commentData));
+
+    setCommentText("");
+
+    resetMessage();
   };
 
   if (loading) {
@@ -57,34 +66,38 @@ const Photo = () => {
         {message && <Message msg={message} type="success" />}
       </div>
       <div className="comments">
-        <h3>Comentários: ({photo.comments.length})</h3>
-        <form onSubmit={handleComment}>
-          <input
-            type="text"
-            placeholder="Insira o seu comentário..."
-            onChange={(e) => setCommentText(e.target.value)}
-            value={commentText || ""}
-          />
-          <input type="submit" value="Enviar" />
-        </form>
-        {photo.comments.length === 0 && <p>Não há comentários.</p>}
-        {photo.comments.length > 0 &&
-          photo.comments.map((comment) => (
-            <div className="comment" key={comment.comment}>
-              <div className="author">
-                {comment.userImage && (
-                  <img
-                    src={`${uploads}/users/${comment.userImage}`}
-                    alt={comment.userName}
-                  />
-                )}
-                <Link to={`/users/${comment.userId}`}>
-                  <p>{comment.userName}</p>
-                </Link>
-              </div>
-              <p>{comment.comment}</p>
-            </div>
-          ))}
+        {photo.comments && (
+          <>
+            <h3>Comentários: ({photo.comments.length})</h3>
+            <form onSubmit={handleComment}>
+              <input
+                type="text"
+                placeholder="Insira o seu comentário..."
+                onChange={(e) => setCommentText(e.target.value)}
+                value={commentText || ""}
+              />
+              <input type="submit" value="Enviar" />
+            </form>
+            {photo.comments.length === 0 && <p>Não há comentários.</p>}
+            {photo.comments.length > 0 &&
+              photo.comments.map((comment) => (
+                <div className="comment" key={comment.comment}>
+                  <div className="author">
+                    {comment.userImage && (
+                      <img
+                        src={`${uploads}/users/${comment.userImage}`}
+                        alt={comment.userName}
+                      />
+                    )}
+                    <Link to={`/users/${comment.userId}`}>
+                      <p>{comment.userName}</p>
+                    </Link>
+                  </div>
+                  <p>{comment.comment}</p>
+                </div>
+              ))}
+          </>
+        )}
       </div>
     </div>
   );
