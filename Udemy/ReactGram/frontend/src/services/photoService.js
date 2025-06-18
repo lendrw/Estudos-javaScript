@@ -107,16 +107,27 @@ const comment = async (data, id, token) => {
 //get all photos
 const getPhotos = async (token) => {
   const config = requestConfig("GET", null, token);
-  try {
-    const res = await fetch(api + "/photos", config)
-      .then((res) => res.json())
-      .catch((err) => err);
 
-    return res;
+  try {
+    const response = await fetch(api + "/photos", config);
+
+    // Verifica se o token expirou
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "/login";
+      return;
+    }
+
+    // Continua se não houver erro de autenticação
+    const data = await response.json();
+    return data;
+
   } catch (error) {
-    console.log(error);
+    console.log("Erro ao buscar fotos:", error);
   }
 };
+
 
 //search photos by title
 const searchPhotos = async (query, token) => {

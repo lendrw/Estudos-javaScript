@@ -10,7 +10,7 @@ const jwtSecret = process.env.JWT_SECRET;
 // Generate token
 const generateToken = (id) => {
   return jwt.sign({ id }, jwtSecret, {
-    expiresIn: "7d",
+    expiresIn: "1d",
   });
 };
 
@@ -57,19 +57,20 @@ const login = async (req, res) => {
 
   const user = await User.findOne({ email });
 
-  //Check if user exists
+  // Check if user exists
   if (!user) {
     res.status(404).json({ errors: ["Usuário não encontrado."] });
     return;
   }
 
-  //Check if password matches
-  if (!(bcrypt.compare(password, user.password))) {
+  // Check if password matches
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
     res.status(422).json({ errors: ["Senha inválida"] });
     return;
   }
 
-  //Return user with token
+  // Return user with token
   res.status(201).json({
     _id: user._id,
     profileImage: user.profileImage,
