@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontSize: 18,
     paddingLeft: 20,
+    fontWeight: "bold",
   },
 
   input: {
@@ -49,6 +50,13 @@ const styles = StyleSheet.create({
   textButtonCalculator: {
     fontSize: 20,
     color: "#FFFFFF",
+  },
+
+  errorMessage: {
+    fontSize: 12,
+    color: "red",
+    fontWeight: "bold",
+    paddingLeft: 20,
   },
 });
 
