@@ -1,1 +1,9 @@
-<p>header works!</p>
+Header: <span [class.minha-cor]="aplicarClasse">{{ tituloHeader }}</span>
+
+<h1 [innerText]="tituloHeader"></h1>
+
+<h3 [style.color]="estiloCor">Meu elemento html</h3>
+
+<input [(ngModel)]="valorInput">
+
+<button (click)="atualizarTitulo()">Atualizar</button>
