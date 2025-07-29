@@ -1,0 +1,19 @@
+.image {
+  width: 70px;
+  height: 100px;
+}
+
+body {
+  background-color: black;
+}
+
+.header {
+  background-color: darkkhaki;
+  padding: 10px;
+}
+.header h1 {
+  color: blue;
+  font-family: cursive;
+}
+
+/*# sourceMappingURL=styles.css.map */

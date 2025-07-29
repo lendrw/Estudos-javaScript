@@ -1,0 +1,11 @@
+@use './variables' as v;
+
+.header {
+  background-color: darkkhaki;
+  padding: 10px;
+
+  h1 {
+    color: v.$color;
+    font-family: v.$font-family;
+  }
+}
