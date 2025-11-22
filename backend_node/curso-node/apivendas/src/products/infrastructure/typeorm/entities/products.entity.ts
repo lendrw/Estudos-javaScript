@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 
 @Entity('products')
@@ -23,6 +24,6 @@ export class Product implements ProductModel {
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date
 
-  @CreateDateColumn({ name: 'created_at' })
+  @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date
 }
