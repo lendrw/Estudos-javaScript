@@ -56,4 +56,63 @@ describe('ProductsTypeormRepository integration tests', () => {
       expect(result.name).toEqual(data.name)
     })
   })
+
+  describe('update', () => {
+    it('should generate an error when the product is not found', async () => {
+      const data = ProductsDataBuilder({})
+      await expect(ormRepository.update(data)).rejects.toThrow(
+        new NotFoundError(`Product not found using ID ${data.id}`),
+      )
+    })
+
+    it('should update a product', async () => {
+      const data = ProductsDataBuilder({})
+      const product = testDataSource.manager.create(Product, data)
+      await testDataSource.manager.save(product)
+      product.name = 'nome atualizado'
+
+      const result = await ormRepository.update(product)
+      expect(result.name).toEqual('nome atualizado')
+    })
+  })
+
+  describe('delete', () => {
+    it('should generate an error when the product is not found', async () => {
+      const id = randomUUID()
+      await expect(ormRepository.delete(id)).rejects.toThrow(
+        new NotFoundError(`Product not found using ID ${id}`),
+      )
+    })
+
+    it('should delete a product', async () => {
+      const data = ProductsDataBuilder({})
+      const product = testDataSource.manager.create(Product, data)
+      await testDataSource.manager.save(product)
+
+      await ormRepository.delete(data.id)
+
+      const result = await testDataSource.manager.findOneBy(Product, {
+        id: data.id,
+      })
+      expect(result).toBeNull()
+    })
+  })
+
+  describe('findByName', () => {
+    it('should generate an error when the product is not found', async () => {
+      const name = 'Product 1'
+      await expect(ormRepository.findByName(name)).rejects.toThrow(
+        new NotFoundError(`Product not found using name ${name}`),
+      )
+    })
+
+    it('should find a product by name', async () => {
+      const data = ProductsDataBuilder({ name: 'Product 1' })
+      const product = testDataSource.manager.create(Product, data)
+      await testDataSource.manager.save(product)
+
+      const result = await ormRepository.findByName(data.name)
+      expect(result.name).toEqual('Product 1')
+    })
+  })
 })
