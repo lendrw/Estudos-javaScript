@@ -1,0 +1,205 @@
+.produtos {
+  padding: 5rem 2rem;
+  background: #0a0a0a;
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.produto-card {
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.produto-card:hover {
+  transform: translateY(-10px);
+  border-color: #00f5ff;
+  box-shadow: 0 20px 40px rgba(0, 245, 255, 0.2);
+}
+
+.produto-image {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+}
+
+.produto-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.produto-card:hover .produto-image img {
+  transform: scale(1.1);
+}
+
+.produto-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.produto-card:hover .produto-overlay {
+  opacity: 1;
+}
+
+.btn-specs,
+.btn-compare {
+  background: linear-gradient(45deg, #00f5ff, #8b5cf6);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  color: #0a0a0a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-specs:hover,
+.btn-compare:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 245, 255, 0.4);
+}
+
+.produto-info {
+  padding: 1.5rem;
+}
+
+.produto-info h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #00f5ff;
+}
+
+.produto-desc {
+  color: #cccccc;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.produto-price {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.price-old {
+  color: #666;
+  text-decoration: line-through;
+  font-size: 0.9rem;
+}
+
+.price-new {
+  color: #39ff14;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.btn-whatsapp {
+  width: 100%;
+  background: #25d366;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.btn-whatsapp:hover {
+  background: #128c7e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .produtos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .produtos {
+    padding: 3rem 1rem;
+  }
+  
+  .produtos-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .produto-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .produto-overlay .btn-specs,
+  .produto-overlay .btn-compare {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .produtos {
+    padding: 2rem 0.5rem;
+  }
+  
+  .produto-card {
+    border-radius: 15px;
+  }
+  
+  .produto-info {
+    padding: 1rem;
+  }
+  
+  .produto-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .btn-whatsapp {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+}

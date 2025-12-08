@@ -1,0 +1,140 @@
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100vh;
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  z-index: 2000;
+  transition: right 0.3s;
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid #00f5ff;
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+.cart-header {
+  padding: 2rem;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-header h3 {
+  font-family: 'Orbitron', monospace;
+  color: #00f5ff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.cart-items {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #666;
+  margin-top: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info h4 {
+  color: #00f5ff;
+  margin-bottom: 0.5rem;
+}
+
+.remove-item {
+  background: #ff0040;
+  border: none;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cart-footer {
+  padding: 2rem;
+  border-top: 1px solid #333;
+}
+
+.cart-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #39ff14;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.checkout-btn {
+  width: 100%;
+  background: #25d366;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.checkout-btn:hover:not(:disabled) {
+  background: #128c7e;
+  transform: translateY(-2px);
+}
+
+.checkout-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .cart-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-header,
+  .cart-footer {
+    padding: 1rem;
+  }
+}

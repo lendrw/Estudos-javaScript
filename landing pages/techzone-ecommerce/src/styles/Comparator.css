@@ -1,0 +1,148 @@
+.comparador {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+
+.compare-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.compare-slot {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px dashed #00f5ff;
+  border-radius: 20px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.compare-placeholder {
+  text-align: center;
+  color: #666;
+}
+
+.compare-placeholder i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #00f5ff;
+}
+
+.compare-product {
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.compare-product img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.compare-product h3 {
+  font-family: 'Orbitron', monospace;
+  color: #00f5ff;
+  margin-bottom: 1rem;
+}
+
+.compare-specs {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #333;
+}
+
+.spec-label {
+  color: #cccccc;
+  font-weight: 600;
+}
+
+.spec-value {
+  color: #00f5ff;
+}
+
+.compare-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #39ff14;
+}
+
+.remove-compare {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff0040;
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.compare-vs {
+  font-family: 'Orbitron', monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #8b5cf6;
+  text-align: center;
+  background: linear-gradient(45deg, #00f5ff, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .comparador {
+    padding: 3rem 1rem;
+  }
+  
+  .compare-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .compare-vs {
+    transform: rotate(90deg);
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .compare-slot {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparador {
+    padding: 2rem 0.5rem;
+  }
+  
+  .compare-product {
+    padding: 1rem;
+  }
+  
+  .compare-product img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .spec-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+}
