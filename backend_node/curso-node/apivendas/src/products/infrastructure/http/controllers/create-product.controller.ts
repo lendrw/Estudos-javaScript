@@ -1,11 +1,8 @@
-import { AppError } from '@/common/domain/errors/app-error'
 import { Request, Response } from 'express'
 import { z } from 'zod'
-import { ProductsTypeormRepository } from '../../typeorm/repositories/products-typeorm.repository'
-import { dataSource } from '@/common/infrastructure/typeorm'
-import { Product } from '../../typeorm/entities/products.entity'
 import { CreateProductUseCase } from '@/products/application/usecases/create-product.usecase'
 import { container } from 'tsyringe'
+import { dataValidation } from '@/common/infrastructure/validation/zod'
 
 export async function createProductController(
   request: Request,
@@ -17,18 +14,10 @@ export async function createProductController(
     quantity: z.number(),
   })
 
-  const validatedData = createProductBodySchema.safeParse(request.body)
-
-  if (validatedData.success === false) {
-    console.error('Invalid data', z.treeifyError(validatedData.error))
-    throw new AppError(
-      `${validatedData.error.issues.map(err => {
-        return `${err.path} -> ${err.message}`
-      })}`,
-    )
-  }
-
-  const { name, price, quantity } = validatedData.data
+  const { name, price, quantity } = dataValidation(
+    createProductBodySchema,
+    request.body,
+  )
 
   const createProductUseCase: CreateProductUseCase.UseCase = container.resolve(
     'CreateProductUseCase',

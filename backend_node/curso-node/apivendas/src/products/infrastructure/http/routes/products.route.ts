@@ -1,9 +1,11 @@
 import { Router } from 'express'
 import { createProductController } from '../controllers/create-product.controller'
+import { getProductController } from '../controllers/get-product.controller'
+import { updateProductController } from '../controllers/update-product.controller'
+import { deleteProductController } from '../controllers/delete-product.controller'
+import { searchProductController } from '../controllers/search-product.controller'
 
 const productsRouter = Router()
-
-productsRouter.post('/', createProductController)
 
 /**
  * @swagger
@@ -76,5 +78,89 @@ productsRouter.post('/', createProductController)
  *       409:
  *         description: Name already used on another product
  */
+productsRouter.post('/', createProductController)
+
+/**
+ * @swagger
+ * /products/{id}:
+ *   get:
+ *     summary: Get a product by ID
+ *     tags: [Products]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The product ID
+ *     responses:
+ *       200:
+ *         description: The product
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       404:
+ *         description: The product was not found
+ */
+productsRouter.get('/:id', getProductController)
+
+/**
+ * @swagger
+ * /products/{id}:
+ *   put:
+ *     summary: Update a product by ID
+ *     tags: [Products]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The product ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Product'
+ *     responses:
+ *       200:
+ *         description: The product was successfully updated
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       400:
+ *         description: Input data not provided or invalid
+ *       404:
+ *         description: The product was not found
+ *       409:
+ *         description: Name already used on another product
+ */
+productsRouter.put('/:id', updateProductController)
+
+/**
+ * @swagger
+ * /products/{id}:
+ *   delete:
+ *     summary: Delete a product by ID
+ *     tags: [Products]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The product ID
+ *     responses:
+ *       204:
+ *         description: The product was successfully deleted
+ *       404:
+ *         description: The product was not found
+ */
+productsRouter.delete('/:id', deleteProductController)
+
+productsRouter.get('/', searchProductController)
 
 export { productsRouter }
