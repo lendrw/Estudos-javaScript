@@ -29,7 +29,7 @@ describe('UpdateAvatarUseCase Unit Tests', () => {
     }
     await expect(async () => sut.execute(input)).rejects.toThrow(NotFoundError)
     await expect(async () => sut.execute(input)).rejects.toThrow(
-      new NotFoundError(`Model not found using ID fakeId`),
+      new NotFoundError(`Model with ID fakeId not found`),
     )
   })
 
